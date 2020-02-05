@@ -1,1 +1,1 @@
-# example-sdk-typescript
+# Example-sdk-typescript
