@@ -1,3 +1,4 @@
+![Imgur](https://imgur.com/a/PL5LWjC)
 # Example: Basic Usage Of ARK Typescript SDK
 
 A simple example showing the usage of ARK Typescript SDK packages. 
@@ -10,7 +11,8 @@ In this example:
 For more info go to: https://sdk.ark.dev
 
 ## How to run this example
-We have to execute the following command
+
+Clone this repository. Then execute:
 
 ```
 npm install
