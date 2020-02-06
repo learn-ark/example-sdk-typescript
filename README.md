@@ -1,4 +1,4 @@
-![Imgur](https://imgur.com/gallery/PL5LWjC)
+![Imgur](https://i.imgur.com/N9LRqmJ.png)
 # Example: Basic Usage Of ARK Typescript SDK
 
 A simple example showing the usage of ARK Typescript SDK packages. 
