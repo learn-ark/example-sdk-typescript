@@ -8,3 +8,15 @@ In this example:
 - how to send transaction to ARK Develop Network
 
 For more info go to: https://sdk.ark.dev
+
+## How to run this example
+We have to execute the following command
+
+```
+npm install
+```
+
+Then to run the following script
+```
+npm start
+```
