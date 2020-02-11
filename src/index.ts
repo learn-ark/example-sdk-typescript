@@ -24,11 +24,12 @@ const senderPassphrase = "master dizzy era math peanut crew run manage better fl
             nonce = Utils.BigNumber.make(nonce).plus(1);
 
             // This is where we build our transaction
-            const trx = Transactions.BuilderFactory.transfer()
+            const trx = Transactions.BuilderFactory.multiPayment()
                 .version(2)
                 .nonce(String(nonce))
-                .amount("100")
-                .recipientId(recipientWalletAddress)
+                .addPayment(recipientWalletAddress, "100")
+                .addPayment(recipientWalletAddress, "100")
+                .addPayment(recipientWalletAddress, "100")
                 .sign(senderPassphrase);
 
             const transaction = trx.build().toJson();
@@ -49,7 +50,8 @@ const senderPassphrase = "master dizzy era math peanut crew run manage better fl
                             expiration: transaction.expiration,
                             recipientId: transaction.recipientId,
                             signature: transaction.signature,
-                            id: transaction.id
+                            id: transaction.id,
+                            asset: transaction.asset
                         }
                     ]
                 }
