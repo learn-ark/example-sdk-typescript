@@ -1,5 +1,5 @@
 import {Transactions , Managers, Utils} from "@arkecosystem/crypto";
-import * as request from "request";
+import { Connection } from "@arkecosystem/client";
 
 /**
  *  Simple example of a transfer transaction using
@@ -14,47 +14,28 @@ const recipientWalletAddress = "DBoKkzKAT6YdXhyv1mvcKEg97JxiRqMuK2";
 
 const senderPassphrase = "master dizzy era math peanut crew run manage better flame tree prevent";
 
-(async () => {
-    let nonce;
-    await request.get("http://dexplorer.ark.io/api/wallets/" + senderWalletAddress,
-        async (error: any,response: any, body:any)=>{
+const initTransaction = async () => {
+    // This is where we make connection to the node
+    const connection: Connection = new Connection("https://dexplorer.ark.io/api/v2");
+    // This is where we get wallets data using typescript-client
+    const response = await connection.api("wallets").get(senderWalletAddress);
+    // This is where we increment nonce by one using Utils bigNumber
+    const nonce = Utils.BigNumber.make(response.body.data.nonce).plus(1);
+    // This is where we build our transfer transaction
+    const trx = Transactions.BuilderFactory.transfer()
+        .version(2)
+        .nonce(String(nonce))
+        .amount("1")
+        .recipientId(recipientWalletAddress)
+        .sign(senderPassphrase);
+    // Here we build our transaction and put it to json format
+    const transaction = trx.build().toJson();
+    // This is where we post our transaction to the connected node
+    const post = await connection.api("transactions").create({ transactions: [transaction] } );
 
-            // This is where we pull out nonce and increment it by one
-            nonce = JSON.parse(body).data.nonce;
-            nonce = Utils.BigNumber.make(nonce).plus(1);
+    console.log(post.body);
+};
 
-            // This is where we build our transaction
-            const trx = Transactions.BuilderFactory.transfer()
-                .version(2)
-                .nonce(String(nonce))
-                .amount("100")
-                .recipientId(recipientWalletAddress)
-                .sign(senderPassphrase);
+initTransaction();
 
-            const transaction = trx.build().toJson();
 
-            // This is where we send out transaction to ark node
-            request.post("https://dexplorer.ark.io/api/transactions",{
-                json: {
-                    transactions: [
-                        {
-                            version: transaction.version,
-                            network: transaction.network,
-                            typeGroup: transaction.typeGroup,
-                            type: transaction.type,
-                            nonce : transaction.nonce,
-                            senderPublicKey:transaction.senderPublicKey,
-                            fee: transaction.fee,
-                            amount: transaction.amount,
-                            expiration: transaction.expiration,
-                            recipientId: transaction.recipientId,
-                            signature: transaction.signature,
-                            id: transaction.id
-                        }
-                    ]
-                }
-            },(error: any,response: any, body:any)=>{
-                console.log(body);
-            })
-        });
-})();
