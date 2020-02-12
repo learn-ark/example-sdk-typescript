@@ -10,8 +10,8 @@ A simple example showing the usage of ARK Typescript SDK packages. Example uses 
 
 This example uses our Typescript packages, that can be found at:
 
-- https://github.com/arkecosystem/crypto
-- https://github.com/arkecosystem/client - this is full API implementation of all public REST endpoints
+- https://github.com/ArkEcosystem/core/tree/master/packages/crypto
+- https://github.com/ArkEcosystem/typescript-client - this is full API implementation of all public REST endpoints
 
 
 ## How to run this example
