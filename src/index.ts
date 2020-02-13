@@ -26,7 +26,7 @@ const transferTransaction = async () => {
     const trx = Transactions.BuilderFactory.transfer()
         .version(2)
         .nonce(String(nonce))
-        .amount("1")
+        .amount("100")  // amount of arktoshis we want to send
         .recipientId(recipientWalletAddress)
         .sign(senderPassphrase);
     // Here we build our transaction and put it to json format
@@ -59,7 +59,7 @@ const multipaymentTransaction = async () => {
         .version(2)
         .nonce(String(nonce))
         .addPayment(recipient1,"100") // here we add payments
-        .addPayment(recipient2,"200")
+        .addPayment(recipient2,"200") // amount of arktoshis we want to send
         .addPayment(recipient3,"200")
         .sign(senderPassphrase);
     // Here we build our transaction and put it to json format
