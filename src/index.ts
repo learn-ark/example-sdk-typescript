@@ -3,7 +3,8 @@ import { Connection } from "@arkecosystem/client";
 
 /**
  *  Simple example of a transfer transaction using
- *  @arkecosystem/crypto https://github.com/ArkEcosystem/core/tree/develop/packages/crypto
+ *  @arkecosystem/crypto https://github.com/ArkEcosystem/core/tree/develop/packages/crypto and
+ *   ArkEcosystem/typescript-client https://github.com/ArkEcosystem/typescript-client
  *
 **/
 
