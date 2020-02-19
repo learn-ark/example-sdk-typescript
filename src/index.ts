@@ -12,7 +12,7 @@ import { Connection } from "@arkecosystem/client";
 // For Mainnet adjust this to higher value: 
 //    Managers.configManager.setFromPreset("mainnet");
 //    Managers.configManager.setHeight(11273000);
-Managers.configManager.setFromPreset("devnet")
+Managers.configManager.setFromPreset("devnet");
 Managers.configManager.setHeight(4006000);
 
 const transferTransaction = async () => {
