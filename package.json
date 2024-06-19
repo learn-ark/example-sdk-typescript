@@ -18,7 +18,7 @@
   "homepage": "https://github.com/learn-ark/Example-sdk-typescript#readme",
   "dependencies": {
     "@arkecosystem/client": "^1.0.5",
-    "@arkecosystem/crypto": "2.7.7",
+    "@arkecosystem/crypto": "3.9.1",
     "@types/bytebuffer": "^5.0.40",
     "install": "^0.13.0"
   },
